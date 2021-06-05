@@ -1,0 +1,52 @@
+{
+  "name": "hapi-routes-list",
+  "version": "1.0.0",
+  "description": "List hapi routes",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wanjas/hapi-routes-list.git"
+  },
+  "keywords": [
+    "hapi",
+    "routes",
+    "list"
+  ],
+  "peerDependencies": {
+    "@hapi/hapi": ">=20"
+  },
+  "dependencies": {
+    "easy-table": "^1.1.1",
+    "chalk": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/hapi__hapi": "20.0.8",
+    "@types/jest": "26.0.23",
+    "@hapi/cookie": "11.0.2",
+    "@hapi/hapi": "20.1.3",
+    "joi": "17.4.0",
+    "jest": "26.6.3",
+    "@typescript-eslint/eslint-plugin": "4.25.0",
+    "@typescript-eslint/parser": "4.25.0",
+    "eslint": "7.27.0",
+    "eslint-config-airbnb-typescript": "12.3.1",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.23.3",
+    "eslint-plugin-jest": "24.3.6",
+    "prettier": "2.3.0",
+    "ts-jest": "26.5.6",
+    "ts-loader": "9.2.2",
+    "ts-node": "10.0.0",
+    "tsconfig-paths": "3.9.0",
+    "typescript": "4.3.2"
+  },
+  "author": "Ivan Belikov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wanjas/hapi-routes-list/issues"
+  },
+  "homepage": "https://github.com/wanjas/hapi-routes-list#readme"
+}
