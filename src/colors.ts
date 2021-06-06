@@ -9,7 +9,7 @@ export type Theme = {
   path: Color;
   strategy: Color;
   scopes: {
-    default: Color;
+    selection: Color;
     required: Color;
     forbidden: Color;
   };
@@ -27,7 +27,7 @@ export const defaultTheme: Theme = {
   path: 'default',
   strategy: chalk.green,
   scopes: {
-    default: chalk.green,
+    selection: chalk.green,
     required: chalk.magenta,
     forbidden: chalk.red,
   },
@@ -45,7 +45,7 @@ export const noColorTheme: Theme = {
   path: 'default',
   strategy: 'default',
   scopes: {
-    default: 'default',
+    selection: 'default',
     required: 'default',
     forbidden: 'default',
   },
@@ -63,7 +63,7 @@ export const rainbowTheme: Theme = {
   path: '#ff8600',
   strategy: chalk.yellow,
   scopes: {
-    default: chalk.greenBright,
+    selection: chalk.greenBright,
     required: chalk.green,
     forbidden: chalk.bgGreen,
   },
