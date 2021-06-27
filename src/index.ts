@@ -1,9 +1,12 @@
 import Hapi, { RequestRoute, Server } from '@hapi/hapi';
 import chalk from 'chalk';
+import Table from 'easy-table';
+
 import { Color, defaultTheme, Theme } from './colors';
 import pkg from '../package.json';
 
 export type RoutesListOptions = {
+  columns?: (keyof typeof columns)[];
   out?: (line: string) => void;
 };
 
@@ -142,12 +145,21 @@ export const RoutesList: Hapi.Plugin<RoutesListOptions> = {
 
     const listRoutes = () => {
       const routingTable = server.table();
+      const t = new Table();
 
       routingTable.forEach((route) => {
         Object.values(columns).forEach((column) => {
-          out(column.coloredText(server, route, column.value, defaultTheme));
+          // out(column.coloredText(server, route, column.value, defaultTheme));
+
+          t.cell(
+            column.header,
+            column.coloredText(server, route, column.value, defaultTheme),
+          );
         });
+        t.newRow();
       });
+
+      out(t.toString());
     };
 
     server.expose('listRoutes', listRoutes);

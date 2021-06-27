@@ -14,13 +14,46 @@ describe('Listing', () => {
   it('List', async () => {
     const server = Hapi.server({});
 
+    server.auth.scheme('custom', () => ({ authenticate: () => true }));
+    server.auth.strategy('session', 'custom');
+
     server.route({
       method: 'POST',
       path: '/first/path/{id}',
       handler: () => {},
     });
 
-    const out = fn();
+    server.route({
+      method: 'PATCH',
+      path: '/second',
+      handler: () => {},
+      options: {
+        auth: {
+          strategy: 'session',
+          mode: 'required',
+          scope: ['admin'],
+        },
+      },
+    });
+
+    server.route({
+      method: 'GET',
+      path: '/third/path',
+      handler: () => {},
+      options: {
+        auth: {
+          strategy: 'session',
+          mode: 'optional',
+          scope: ['admin', '+req', '!not'],
+        },
+      },
+    });
+
+    const mockFn = fn();
+    const out = (line: string) => {
+      console.log(line);
+      mockFn(line);
+    };
 
     await server.register({
       plugin: RoutesList,
@@ -33,7 +66,7 @@ describe('Listing', () => {
 
     exposedListing(server)();
 
-    expect(out.mock.calls).toEqual([
+    expect(mockFn.mock.calls).toEqual([
       [chalk.blue('POST')],
       ['/first/path/{id}'],
     ]);
